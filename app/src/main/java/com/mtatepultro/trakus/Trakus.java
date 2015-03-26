@@ -6,8 +6,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewTreeObserver;
-import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 
@@ -36,7 +36,7 @@ public class Trakus extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trakus);
 
-       
+
 
         this.oGameBoard = (GridLayout) this.findViewById(R.id.gridGameBoard);
         this.oGameBoard.getViewTreeObserver().addOnGlobalLayoutListener(this.SquareIfy());
@@ -64,13 +64,17 @@ public class Trakus extends ActionBarActivity {
                 double smallestSize = (sizeA<sizeB?sizeA:sizeB);
                 int smallestSizeInt = (int) Math.floor(smallestSize);
 
+
+
                 for(int x=0;x<=tileCount-1;x++)
                 {
                     try
                     {
-                        Button b = new Button(Trakus.this);
-                        b.setText(String.valueOf(x));
+                        ImageButton b = new ImageButton(Trakus.this);
+                        //b.setText(String.valueOf(x));
                         b.setPadding(0, 0, 0, 0);
+                        b.setImageResource(R.drawable.tile_blank);
+
 
                         GridLayout.LayoutParams lp = new GridLayout.LayoutParams();
                         lp.width = smallestSizeInt;
@@ -90,6 +94,7 @@ public class Trakus extends ActionBarActivity {
                         ex.printStackTrace();
                     }
                 }
+
 
                 if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
                 {
