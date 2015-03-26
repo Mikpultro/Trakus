@@ -36,12 +36,7 @@ public class Trakus extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trakus);
 
-//        GridView gridView = (GridView) findViewById(R.id.gridGameBoard);
-//
-//        // Instance of ImageAdapter Class
-//        gridView.setAdapter(new ImageAdapter(this,mThumbIds));
-//
-        this.oGameBoardShell = (LinearLayout) this.findViewById(R.id.shellGameBoard);
+       
 
         this.oGameBoard = (GridLayout) this.findViewById(R.id.gridGameBoard);
         this.oGameBoard.getViewTreeObserver().addOnGlobalLayoutListener(this.SquareIfy());
