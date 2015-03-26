@@ -1,0 +1,106 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.mtatepultro.trakus.Trakus">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="150dp"
+        android:layout_height="fill_parent"
+        android:id="@+id/tray_Player1"
+        android:layout_alignTop="@+id/tray_Player2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:weightSum="1">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_Player1_I"
+            android:layout_weight="0.02"
+            android:adjustViewBounds="true"
+            android:src="@drawable/tile_i_blue"
+            android:visibility="visible"
+            android:clickable="false"/>
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_Player1_L"
+            android:layout_weight="0.02"
+            android:adjustViewBounds="true"
+            android:src="@drawable/tile_l_blue"/>
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_Player1_T"
+            android:layout_weight="0.23"
+            android:src="@drawable/tile_t_blue"
+            android:contentDescription="player1_t_tile"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/shellGameBoard"
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_toRightOf="@+id/tray_Player1"
+        android:layout_toLeftOf="@+id/tray_Player2"
+        android:layout_toStartOf="@+id/tray_Player2">
+
+        <GridLayout
+            android:background="#FFFF00"
+            android:id="@+id/gridGameBoard"
+            android:rowCount="6"
+            android:columnCount="6"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="0dp"
+            android:layout_marginBottom="0dp"
+            android:layout_toRightOf="@+id/tray_Player1"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/tray_Player2"
+            android:layout_toStartOf="@+id/tray_Player2"
+            android:layout_alignParentEnd="false"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="150dp"
+        android:layout_height="fill_parent"
+        android:id="@+id/tray_Player2"
+        android:weightSum="1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_Player2_I"
+            android:layout_weight="0.16"
+            android:src="@drawable/tile_i_red"
+            android:cropToPadding="false"/>
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_Player2_L"
+            android:layout_weight="0.16"
+            android:src="@drawable/tile_l_red"/>
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_Player2_T"
+            android:layout_weight="0.16"
+            android:src="@drawable/tile_t_red"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
