@@ -51,8 +51,8 @@ public class Trakus extends ActionBarActivity {
         iTile_Player2 = (ImageButton)findViewById(R.id.button_Player2_I);
         lTile_Player2 = (ImageButton)findViewById(R.id.button_Player2_L);
         tTile_Player2 = (ImageButton)findViewById(R.id.button_Player2_T);
-        oGameBoardShell = (LinearLayout)findViewById(R.id.shellGameBoard);
-        oGameBoardShell.setOnDragListener(new View.OnDragListener() {
+        oGameBoard = (GridLayout)findViewById(R.id.gridGameBoard);
+        oGameBoard.setOnDragListener(new View.OnDragListener() {
             @Override
             public boolean onDrag(View v, DragEvent event) {
                 final int action = event.getAction();
@@ -64,6 +64,7 @@ public class Trakus extends ActionBarActivity {
                     case DragEvent.ACTION_DRAG_ENTERED:
                         break;
                     case DragEvent.ACTION_DROP:{
+                        System.out.println(event.getX() + " " + event.getY());
 
                         return(true);
                     }
