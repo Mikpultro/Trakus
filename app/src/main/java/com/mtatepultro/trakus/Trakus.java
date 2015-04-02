@@ -1,10 +1,14 @@
 package com.mtatepultro.trakus;
 
+import android.content.ClipData;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
@@ -15,6 +19,12 @@ import android.widget.LinearLayout;
 public class Trakus extends ActionBarActivity {
 
     // Keep all Images in array
+    ImageButton iTile_Player1;
+    ImageButton iTile_Player2;
+    ImageButton lTile_Player1;
+    ImageButton lTile_Player2;
+    ImageButton tTile_Player1;
+    ImageButton tTile_Player2;
 
     private GridLayout oGameBoard;
     private LinearLayout oGameBoardShell;
@@ -35,6 +45,96 @@ public class Trakus extends ActionBarActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trakus);
+        iTile_Player1 = (ImageButton)findViewById(R.id.button_Player1_I);
+        lTile_Player1 = (ImageButton)findViewById(R.id.button_Player1_L);
+        tTile_Player1 = (ImageButton)findViewById(R.id.button_Player1_T);
+        iTile_Player2 = (ImageButton)findViewById(R.id.button_Player2_I);
+        lTile_Player2 = (ImageButton)findViewById(R.id.button_Player2_L);
+        tTile_Player2 = (ImageButton)findViewById(R.id.button_Player2_T);
+        oGameBoardShell = (LinearLayout)findViewById(R.id.shellGameBoard);
+        oGameBoardShell.setOnDragListener(new View.OnDragListener() {
+            @Override
+            public boolean onDrag(View v, DragEvent event) {
+                final int action = event.getAction();
+                switch(action) {
+                    case DragEvent.ACTION_DRAG_STARTED:
+                        break;
+                    case DragEvent.ACTION_DRAG_EXITED:
+                        break;
+                    case DragEvent.ACTION_DRAG_ENTERED:
+                        break;
+                    case DragEvent.ACTION_DROP:{
+
+                        return(true);
+                    }
+                    case DragEvent.ACTION_DRAG_ENDED:{
+
+                        return(true);
+                    }
+                    default:
+                        break;
+                }
+                return true;
+            }});
+        iTile_Player1.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent arg1) {
+                ClipData data = ClipData.newPlainText("", "");
+                View.DragShadowBuilder shadow_iTile_Player1 = new View.DragShadowBuilder(iTile_Player1);
+                v.startDrag(data, shadow_iTile_Player1, null, 0);
+                return false;
+            }
+        });
+
+        iTile_Player2.setOnTouchListener(new View.OnTouchListener() {
+             @Override
+             public boolean onTouch(View v, MotionEvent arg1) {
+                 ClipData data = ClipData.newPlainText("", "");
+                 View.DragShadowBuilder shadow_iTile_Player2 = new View.DragShadowBuilder(iTile_Player2);
+                 v.startDrag(data, shadow_iTile_Player2, null, 0);
+                 return false;
+             }
+        });
+
+        lTile_Player1.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent arg1) {
+                ClipData data = ClipData.newPlainText("", "");
+                View.DragShadowBuilder shadow_lTile_Player1 = new View.DragShadowBuilder(lTile_Player1);
+                v.startDrag(data, shadow_lTile_Player1, null, 0);
+                return false;
+            }
+        });
+
+        lTile_Player2.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent arg1) {
+                ClipData data = ClipData.newPlainText("", "");
+                View.DragShadowBuilder shadow_lTile_Player2 = new View.DragShadowBuilder(lTile_Player2);
+                v.startDrag(data, shadow_lTile_Player2, null, 0);
+                return false;
+            }
+        });
+
+        tTile_Player1.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent arg1) {
+                ClipData data = ClipData.newPlainText("", "");
+                View.DragShadowBuilder shadow_tTile_Player1 = new View.DragShadowBuilder(tTile_Player1);
+                v.startDrag(data, shadow_tTile_Player1, null, 0);
+                return false;
+            }
+        });
+
+        tTile_Player2.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent arg1) {
+                ClipData data = ClipData.newPlainText("", "");
+                View.DragShadowBuilder shadow_tTile_Player2 = new View.DragShadowBuilder(tTile_Player2);
+                v.startDrag(data, shadow_tTile_Player2, null, 0);
+                return false;
+            }
+        });
 
 
 
@@ -110,6 +210,8 @@ public class Trakus extends ActionBarActivity {
             }
         };
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
