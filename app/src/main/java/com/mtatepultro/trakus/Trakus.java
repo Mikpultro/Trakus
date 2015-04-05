@@ -65,7 +65,7 @@ public class Trakus extends ActionBarActivity {
                         break;
                     case DragEvent.ACTION_DROP:{
                         System.out.println(event.getX() + " " + event.getY());
-
+                        placeTile(event.getX(), event.getY());
                         return(true);
                     }
                     case DragEvent.ACTION_DRAG_ENDED:{
@@ -144,6 +144,144 @@ public class Trakus extends ActionBarActivity {
 
     }
 
+    public void placeTile( float xPos, float yPos){
+        int width = Trakus.this.oGameBoard.getMeasuredWidth();
+        int height = Trakus.this.oGameBoard.getMeasuredHeight();
+        int cols = Trakus.this.oGameBoard.getColumnCount();
+        int rows = Trakus.this.oGameBoard.getRowCount();
+
+        double sizeX = (width/cols);
+        double sizeY = (height/rows);
+
+        if(xPos > 0 && xPos < sizeX){
+            if(yPos > 0 && yPos < sizeY){
+                System.out.println("Tile 0");
+            }
+            else if(yPos > sizeY && yPos < (sizeY*2)){
+                System.out.println("Tile 6");
+            }
+            else if(yPos > (sizeY*2) && yPos < (sizeY*3)){
+                System.out.println("Tile 12");
+            }
+            else if(yPos > (sizeY*3) && yPos < (sizeY*4)){
+                System.out.println("Tile 18");
+            }
+            else if(yPos > (sizeY*4) && yPos < (sizeY*5)){
+                System.out.println("Tile 24");
+            }
+            else if(yPos > (sizeY*5) && yPos < (sizeY*6)){
+                System.out.println("Tile 30");
+            }
+        }
+        else if(xPos > sizeX && xPos < (sizeX*2)){
+            if(yPos > 0 && yPos < sizeY){
+                System.out.println("Tile 1");
+            }
+            else if(yPos > sizeY && yPos < (sizeY*2)){
+                System.out.println("Tile 7");
+            }
+            else if(yPos > (sizeY*2) && yPos < (sizeY*3)){
+                System.out.println("Tile 13");
+            }
+            else if(yPos > (sizeY*3) && yPos < (sizeY*4)){
+                System.out.println("Tile 19");
+            }
+            else if(yPos > (sizeY*4) && yPos < (sizeY*5)){
+                System.out.println("Tile 25");
+            }
+            else if(yPos > (sizeY*5) && yPos < (sizeY*6)){
+                System.out.println("Tile 31");
+            }
+        }
+        else if(xPos > (sizeX*2) && xPos < (sizeX*3)){
+            if(yPos > 0 && yPos < sizeY){
+                System.out.println("Tile 2");
+            }
+            else if(yPos > sizeY && yPos < (sizeY*2)){
+                System.out.println("Tile 8");
+            }
+            else if(yPos > (sizeY*2) && yPos < (sizeY*3)){
+                System.out.println("Tile 14");
+            }
+            else if(yPos > (sizeY*3) && yPos < (sizeY*4)){
+                System.out.println("Tile 20");
+            }
+            else if(yPos > (sizeY*4) && yPos < (sizeY*5)){
+                System.out.println("Tile 26");
+            }
+            else if(yPos > (sizeY*5) && yPos < (sizeY*6)){
+                System.out.println("Tile 32");
+            }
+        }
+        else if(xPos > (sizeX*3) && xPos < (sizeX*4)){
+            if(yPos > 0 && yPos < sizeY){
+                System.out.println("Tile 3");
+            }
+            else if(yPos > sizeY && yPos < (sizeY*2)){
+                System.out.println("Tile 9");
+            }
+            else if(yPos > (sizeY*2) && yPos < (sizeY*3)){
+                System.out.println("Tile 15");
+            }
+            else if(yPos > (sizeY*3) && yPos < (sizeY*4)){
+                System.out.println("Tile 21");
+            }
+            else if(yPos > (sizeY*4) && yPos < (sizeY*5)){
+                System.out.println("Tile 27");
+            }
+            else if(yPos > (sizeY*5) && yPos < (sizeY*6)){
+                System.out.println("Tile 33");
+            }
+        }
+        else if(xPos > (sizeX*4) && xPos < (sizeX*5)){
+            if(yPos > 0 && yPos < sizeY){
+                System.out.println("Tile 4");
+            }
+            else if(yPos > sizeY && yPos < (sizeY*2)){
+                System.out.println("Tile 10");
+            }
+            else if(yPos > (sizeY*2) && yPos < (sizeY*3)){
+                System.out.println("Tile 16");
+            }
+            else if(yPos > (sizeY*3) && yPos < (sizeY*4)){
+                System.out.println("Tile 22");
+            }
+            else if(yPos > (sizeY*4) && yPos < (sizeY*5)){
+                System.out.println("Tile 28");
+            }
+            else if(yPos > (sizeY*5) && yPos < (sizeY*6)){
+                System.out.println("Tile 34");
+            }
+        }
+        else if(xPos > (sizeX*5) && xPos < (sizeX*6)){
+            if(yPos > 0 && yPos < sizeY){
+                System.out.println("Tile 5");
+            }
+            else if(yPos > sizeY && yPos < (sizeY*2)){
+                System.out.println("Tile 11");
+            }
+            else if(yPos > (sizeY*2) && yPos < (sizeY*3)){
+                System.out.println("Tile 17");
+            }
+            else if(yPos > (sizeY*3) && yPos < (sizeY*4)){
+                System.out.println("Tile 23");
+            }
+            else if(yPos > (sizeY*4) && yPos < (sizeY*5)){
+                System.out.println("Tile 29");
+            }
+            else if(yPos > (sizeY*5) && yPos < (sizeY*6)){
+                System.out.println("Tile 35");
+            }
+        }
+//        else if( xPos < 1350 && xPos > 650){
+//            if(yPos > 0 && yPos < 650){
+//                System.out.println("Top right");
+//            }
+//            else if(yPos < 1350 && yPos > 650){
+//                System.out.println("Bottom right");
+//            }
+//        }
+    }
 
     ViewTreeObserver.OnGlobalLayoutListener SquareIfy()
     {
