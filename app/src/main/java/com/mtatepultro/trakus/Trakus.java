@@ -14,6 +14,10 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.mtatepultro.trakus.R.drawable.*;
 
 
 public class Trakus extends ActionBarActivity {
@@ -26,20 +30,32 @@ public class Trakus extends ActionBarActivity {
     ImageButton tTile_Player1;
     ImageButton tTile_Player2;
 
+    private static Integer numTiles = 36;
+
     private GridLayout oGameBoard;
     private LinearLayout oGameBoardShell;
 
-    private static Tile[] InitializeTiles(){
-        Tile tiles[] = new Tile[36];
-        for( int i = 0; i < 36; i++)
-        {
-            tiles[i] = new Tile(i, Tile.TileType.blank_Tile, Tile.Owner.open);
+    private static List<ImageButton> buttonList = new ArrayList<ImageButton>(36);
+    private static List<Tile> tileList;
+
+    private static List<Tile> initializeTiles(){
+
+        ArrayList<Tile> tiles = new ArrayList<>(numTiles);
+
+        for (int i = 0; i < numTiles; i++){
+            Tile currentTile = new Tile(i, Tile.TileType.blank_Tile, Tile.Owner.open);
+            tiles.add(i, currentTile);
         }
-        tiles[0].setTileType(Tile.TileType.l_Tile);
-        tiles[35].setTileType(Tile.TileType.l_Tile);
+
+        tiles.get(0).setTileType(Tile.TileType.l_Tile);
+        tiles.get(35).setTileType(Tile.TileType.l_Tile);
+
         return tiles;
     }
 
+    public Trakus(){
+        tileList = initializeTiles();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +68,7 @@ public class Trakus extends ActionBarActivity {
         lTile_Player2 = (ImageButton)findViewById(R.id.button_Player2_L);
         tTile_Player2 = (ImageButton)findViewById(R.id.button_Player2_T);
         oGameBoard = (GridLayout)findViewById(R.id.gridGameBoard);
+
         oGameBoard.setOnDragListener(new View.OnDragListener() {
             @Override
             public boolean onDrag(View v, DragEvent event) {
@@ -64,7 +81,7 @@ public class Trakus extends ActionBarActivity {
                     case DragEvent.ACTION_DRAG_ENTERED:
                         break;
                     case DragEvent.ACTION_DROP:{
-                        System.out.println(event.getX() + " " + event.getY());
+//                        System.out.println(event.getX() + " " + event.getY());
                         placeTile(event.getX(), event.getY());
                         return(true);
                     }
@@ -153,9 +170,14 @@ public class Trakus extends ActionBarActivity {
         double sizeX = (width/cols);
         double sizeY = (height/rows);
 
+        ImageButton currentTile;
+
         if(xPos > 0 && xPos < sizeX){
             if(yPos > 0 && yPos < sizeY){
                 System.out.println("Tile 0");
+                currentTile = buttonList.get(0);
+                currentTile.setImageResource(R.drawable.tile);
+                buttonList.set(0, currentTile);
             }
             else if(yPos > sizeY && yPos < (sizeY*2)){
                 System.out.println("Tile 6");
@@ -273,14 +295,6 @@ public class Trakus extends ActionBarActivity {
                 System.out.println("Tile 35");
             }
         }
-//        else if( xPos < 1350 && xPos > 650){
-//            if(yPos > 0 && yPos < 650){
-//                System.out.println("Top right");
-//            }
-//            else if(yPos < 1350 && yPos > 650){
-//                System.out.println("Bottom right");
-//            }
-//        }
     }
 
     ViewTreeObserver.OnGlobalLayoutListener SquareIfy()
@@ -306,33 +320,28 @@ public class Trakus extends ActionBarActivity {
 
 
                 for(int x=0;x<=tileCount-1;x++)
-                {
-                    try
-                    {
+                    try {
                         ImageButton b = new ImageButton(Trakus.this);
-                        //b.setText(String.valueOf(x));
+                        buttonList.add(x, b);
                         b.setPadding(0, 0, 0, 0);
-                        b.setImageResource(R.drawable.tile_blank);
-
+                        b.setImageResource(tile_blank);
 
                         GridLayout.LayoutParams lp = new GridLayout.LayoutParams();
+
                         lp.width = smallestSizeInt;
                         lp.height = smallestSizeInt;
-                        lp.leftMargin=0;
-                        lp.rightMargin=0;
-                        lp.topMargin=0;
-                        lp.bottomMargin=0;
+                        lp.leftMargin = 0;
+                        lp.rightMargin = 0;
+                        lp.topMargin = 0;
+                        lp.bottomMargin = 0;
                         b.setLayoutParams(lp);
 
                         Trakus.this.oGameBoard.addView(b);
-                        Trakus.this.oGameBoard.getLayoutParams().width=smallestSizeInt * cols;
-                        Trakus.this.oGameBoard.getLayoutParams().height=smallestSizeInt * rows;
-                    }
-                    catch(Exception ex)
-                    {
+                        Trakus.this.oGameBoard.getLayoutParams().width = smallestSizeInt * cols;
+                        Trakus.this.oGameBoard.getLayoutParams().height = smallestSizeInt * rows;
+                    } catch (Exception ex) {
                         ex.printStackTrace();
                     }
-                }
 
 
                 if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
