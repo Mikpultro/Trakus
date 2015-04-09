@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.mtatepultro.trakus.R.drawable.*;
+import static com.mtatepultro.trakus.R.drawable.tile_blank;
 
 
 public class Trakus extends ActionBarActivity {
@@ -30,6 +30,7 @@ public class Trakus extends ActionBarActivity {
     ImageButton tTile_Player1;
     ImageButton tTile_Player2;
 
+    private static Integer draggingButton;
     private static Integer numTiles = 36;
 
     private GridLayout oGameBoard;
@@ -81,8 +82,7 @@ public class Trakus extends ActionBarActivity {
                     case DragEvent.ACTION_DRAG_ENTERED:
                         break;
                     case DragEvent.ACTION_DROP:{
-//                        System.out.println(event.getX() + " " + event.getY());
-                        placeTile(event.getX(), event.getY());
+                        placeTile(event.getX(), event.getY(), draggingButton);
                         return(true);
                     }
                     case DragEvent.ACTION_DRAG_ENDED:{
@@ -100,6 +100,7 @@ public class Trakus extends ActionBarActivity {
                 ClipData data = ClipData.newPlainText("", "");
                 View.DragShadowBuilder shadow_iTile_Player1 = new View.DragShadowBuilder(iTile_Player1);
                 v.startDrag(data, shadow_iTile_Player1, null, 0);
+                draggingButton = v.getId();
                 return false;
             }
         });
@@ -110,6 +111,7 @@ public class Trakus extends ActionBarActivity {
                  ClipData data = ClipData.newPlainText("", "");
                  View.DragShadowBuilder shadow_iTile_Player2 = new View.DragShadowBuilder(iTile_Player2);
                  v.startDrag(data, shadow_iTile_Player2, null, 0);
+                 draggingButton = v.getId();
                  return false;
              }
         });
@@ -120,6 +122,7 @@ public class Trakus extends ActionBarActivity {
                 ClipData data = ClipData.newPlainText("", "");
                 View.DragShadowBuilder shadow_lTile_Player1 = new View.DragShadowBuilder(lTile_Player1);
                 v.startDrag(data, shadow_lTile_Player1, null, 0);
+                draggingButton = v.getId();
                 return false;
             }
         });
@@ -130,6 +133,7 @@ public class Trakus extends ActionBarActivity {
                 ClipData data = ClipData.newPlainText("", "");
                 View.DragShadowBuilder shadow_lTile_Player2 = new View.DragShadowBuilder(lTile_Player2);
                 v.startDrag(data, shadow_lTile_Player2, null, 0);
+                draggingButton = v.getId();
                 return false;
             }
         });
@@ -140,6 +144,7 @@ public class Trakus extends ActionBarActivity {
                 ClipData data = ClipData.newPlainText("", "");
                 View.DragShadowBuilder shadow_tTile_Player1 = new View.DragShadowBuilder(tTile_Player1);
                 v.startDrag(data, shadow_tTile_Player1, null, 0);
+                draggingButton = v.getId();
                 return false;
             }
         });
@@ -150,6 +155,7 @@ public class Trakus extends ActionBarActivity {
                 ClipData data = ClipData.newPlainText("", "");
                 View.DragShadowBuilder shadow_tTile_Player2 = new View.DragShadowBuilder(tTile_Player2);
                 v.startDrag(data, shadow_tTile_Player2, null, 0);
+                draggingButton = v.getId();
                 return false;
             }
         });
@@ -161,7 +167,22 @@ public class Trakus extends ActionBarActivity {
 
     }
 
-    public void placeTile( float xPos, float yPos){
+
+    private void tileConfig(int pos, int tileToUse){
+
+        ImageButton currentButton;
+        Tile currentTile;
+
+
+        currentTile = tileList.get(pos);
+        currentButton = buttonList.get(pos);
+        currentButton.setImageResource(tileToUse);
+        System.out.println(tileToUse);
+        buttonList.set(pos, currentButton);
+        tileList.set(pos, currentTile);
+    }
+
+    public void placeTile( float xPos, float yPos, Integer view){
         int width = Trakus.this.oGameBoard.getMeasuredWidth();
         int height = Trakus.this.oGameBoard.getMeasuredHeight();
         int cols = Trakus.this.oGameBoard.getColumnCount();
@@ -169,24 +190,52 @@ public class Trakus extends ActionBarActivity {
 
         double sizeX = (width/cols);
         double sizeY = (height/rows);
+        int tileToUse;
 
-        ImageButton currentTile;
+
+
+
+
+        switch (view){
+            case R.id.button_Player1_I: tileToUse = R.drawable.tile_i_blue;
+                break;
+            case R.id.button_Player1_L: tileToUse = R.drawable.tile_l_blue;
+                break;
+            case R.id.button_Player1_T: tileToUse = R.drawable.tile_t_blue;
+                break;
+            case R.id.button_Player2_I: tileToUse = R.drawable.tile_i_red;
+                break;
+            case R.id.button_Player2_L: tileToUse = R.drawable.tile_l_red;
+                break;
+            case R.id.button_Player2_T: tileToUse = R.drawable.tile_t_red;
+                break;
+            default: tileToUse = R.drawable.tile;
+                break;
+        }
 
         if(xPos > 0 && xPos < sizeX){
             if(yPos > 0 && yPos < sizeY){
                 System.out.println("Tile 0");
-                currentTile = buttonList.get(0);
-                currentTile.setImageResource(R.drawable.tile);
-                buttonList.set(0, currentTile);
+//                currentTile = tileList.get(0);
+//                currentTile.setOwner(Tile.Owner.player_1);
+//                currentButton = buttonList.get(0);
+//                currentButton.setImageResource(tileToUse);
+//                System.out.println(tileToUse);
+//                buttonList.set(0, currentButton);
+//                tileList.set(0, currentTile);
+                tileConfig(0, tileToUse);
             }
             else if(yPos > sizeY && yPos < (sizeY*2)){
                 System.out.println("Tile 6");
+                tileConfig(6, tileToUse);
             }
             else if(yPos > (sizeY*2) && yPos < (sizeY*3)){
                 System.out.println("Tile 12");
+                tileConfig(12, tileToUse);
             }
             else if(yPos > (sizeY*3) && yPos < (sizeY*4)){
                 System.out.println("Tile 18");
+                tileConfig(18, tileToUse);
             }
             else if(yPos > (sizeY*4) && yPos < (sizeY*5)){
                 System.out.println("Tile 24");
