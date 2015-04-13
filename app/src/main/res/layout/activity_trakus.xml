@@ -22,7 +22,7 @@
             android:id="@+id/button_Player1_I"
             android:layout_weight="0.02"
             android:adjustViewBounds="true"
-            android:src="@drawable/tile_i_blue"
+            android:src="@drawable/tile_i_blue_0"
             android:visibility="visible"
             android:clickable="false"/>
 
@@ -32,14 +32,14 @@
             android:id="@+id/button_Player1_L"
             android:layout_weight="0.02"
             android:adjustViewBounds="true"
-            android:src="@drawable/tile_l_blue"/>
+            android:src="@drawable/tile_l_blue_0"/>
 
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button_Player1_T"
             android:layout_weight="0.23"
-            android:src="@drawable/tile_t_blue"
+            android:src="@drawable/tile_t_blue_0"
             android:contentDescription="player1_t_tile"/>
 
     </LinearLayout>
@@ -54,7 +54,7 @@
         android:layout_toStartOf="@+id/tray_Player2">
 
         <GridLayout
-            android:background="#FFFF00"
+            android:background="@android:color/white"
             android:id="@+id/gridGameBoard"
             android:rowCount="6"
             android:columnCount="6"
@@ -84,7 +84,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/button_Player2_I"
             android:layout_weight="0.16"
-            android:src="@drawable/tile_i_red"
+            android:src="@drawable/tile_i_red_0"
             android:cropToPadding="false"/>
 
         <ImageButton
@@ -92,14 +92,14 @@
             android:layout_height="wrap_content"
             android:id="@+id/button_Player2_L"
             android:layout_weight="0.16"
-            android:src="@drawable/tile_l_red"/>
+            android:src="@drawable/tile_l_red_0"/>
 
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button_Player2_T"
             android:layout_weight="0.16"
-            android:src="@drawable/tile_t_red"/>
+            android:src="@drawable/tile_t_red_0"/>
 
     </LinearLayout>
 
