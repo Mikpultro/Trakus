@@ -14,7 +14,9 @@
         android:layout_alignTop="@+id/tray_Player2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:clickable="true"
+        android:onClick="rotate">
 
         <ImageButton
             android:layout_width="match_parent"
@@ -24,7 +26,9 @@
             android:adjustViewBounds="true"
             android:src="@drawable/tile_i_blue_0"
             android:visibility="visible"
-            android:clickable="false"/>
+            android:clickable="true"
+            android:onClick="rotate()"
+            android:nestedScrollingEnabled="false"/>
 
         <ImageButton
             android:layout_width="match_parent"
@@ -32,7 +36,9 @@
             android:id="@+id/button_Player1_L"
             android:layout_weight="0.02"
             android:adjustViewBounds="true"
-            android:src="@drawable/tile_l_blue_0"/>
+            android:src="@drawable/tile_l_blue_0"
+            android:clickable="true"
+            />
 
         <ImageButton
             android:layout_width="match_parent"
@@ -40,7 +46,9 @@
             android:id="@+id/button_Player1_T"
             android:layout_weight="0.23"
             android:src="@drawable/tile_t_blue_0"
-            android:contentDescription="player1_t_tile"/>
+            android:contentDescription="player1_t_tile"
+            android:clickable="true"
+            />
 
     </LinearLayout>
     <LinearLayout
@@ -104,3 +112,4 @@
     </LinearLayout>
 
 </RelativeLayout>
+
