@@ -10,9 +10,12 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.view.animation.AnimationUtils;
+import android.view.animation.RotateAnimation;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +33,8 @@ public class Trakus extends ActionBarActivity {
     ImageButton tTile_Player1;
     ImageButton tTile_Player2;
 
+    TextView counter1;
+
     Integer iTile_Player1_rotation = R.drawable.tile_i_blue_0;
     Integer lTile_Player1_rotation = R.drawable.tile_l_blue_0;
     Integer tTile_Player1_rotation = R.drawable.tile_t_blue_0;
@@ -44,6 +49,11 @@ public class Trakus extends ActionBarActivity {
 
     private GridLayout oGameBoard;
     private LinearLayout oGameBoardShell;
+
+    Player playerOne = new Player(5, 8, 3);
+    Player playerTwo = new Player(5, 8, 3);;
+    public String numITilesP1;
+
 
     private static List<ImageButton> buttonList = new ArrayList<ImageButton>(36);
     private static List<Tile> tileList;
@@ -129,6 +139,75 @@ public class Trakus extends ActionBarActivity {
                     break;
             }
         }
+        else if(button == lTile_Player1)
+        {
+            switch(rotation){
+                case R.drawable.tile_l_blue_0: newRotation = R.drawable.tile_l_blue_90;
+                    lTile_Player1_rotation = R.drawable.tile_l_blue_90;
+                    break;
+                case R.drawable.tile_l_blue_90: newRotation = R.drawable.tile_l_blue_180;
+                    lTile_Player1_rotation = R.drawable.tile_l_blue_180;
+                    break;
+                case R.drawable.tile_l_blue_180: newRotation = R.drawable.tile_l_blue_270;
+                    lTile_Player1_rotation = R.drawable.tile_l_blue_270;
+                    break;
+                case R.drawable.tile_l_blue_270: newRotation = R.drawable.tile_l_blue_0;
+                    lTile_Player1_rotation = R.drawable.tile_l_blue_0;
+                    break;
+            }
+        }
+        else if(button == lTile_Player2)
+        {
+            switch(rotation){
+                case R.drawable.tile_l_red_0: newRotation = R.drawable.tile_l_red_90;
+                    lTile_Player2_rotation = R.drawable.tile_l_red_90;
+                    break;
+                case R.drawable.tile_l_red_90: newRotation = R.drawable.tile_l_red_180;
+                    lTile_Player2_rotation = R.drawable.tile_l_red_180;
+                    break;
+                case R.drawable.tile_l_red_180: newRotation = R.drawable.tile_l_red_270;
+                    lTile_Player2_rotation = R.drawable.tile_l_red_270;
+                    break;
+                case R.drawable.tile_l_red_270: newRotation = R.drawable.tile_l_red_0;
+                    lTile_Player2_rotation = R.drawable.tile_l_red_0;
+                    break;
+            }
+        }
+        else if(button == tTile_Player1)
+        {
+            switch(rotation){
+                case R.drawable.tile_t_blue_0: newRotation = R.drawable.tile_t_blue_90;
+                    tTile_Player1_rotation = R.drawable.tile_t_blue_90;
+                    break;
+                case R.drawable.tile_t_blue_90: newRotation = R.drawable.tile_t_blue_180;
+                    tTile_Player1_rotation = R.drawable.tile_t_blue_180;
+                    break;
+                case R.drawable.tile_t_blue_180: newRotation = R.drawable.tile_t_blue_270;
+                    tTile_Player1_rotation = R.drawable.tile_t_blue_270;
+                    break;
+                case R.drawable.tile_t_blue_270: newRotation = R.drawable.tile_t_blue_0;
+                    tTile_Player1_rotation = R.drawable.tile_t_blue_0;
+                    break;
+            }
+        }
+        else if(button == tTile_Player2)
+        {
+            switch(rotation){
+                case R.drawable.tile_t_red_0: newRotation = R.drawable.tile_t_red_90;
+                    tTile_Player2_rotation = R.drawable.tile_t_red_90;
+                    break;
+                case R.drawable.tile_t_red_90: newRotation = R.drawable.tile_t_red_180;
+                    tTile_Player2_rotation = R.drawable.tile_t_red_180;
+                    break;
+                case R.drawable.tile_t_red_180: newRotation = R.drawable.tile_t_red_270;
+                    tTile_Player2_rotation = R.drawable.tile_t_red_270;
+                    break;
+                case R.drawable.tile_t_red_270: newRotation = R.drawable.tile_t_red_0;
+                    tTile_Player2_rotation = R.drawable.tile_t_red_0;
+                    break;
+            }
+        }
+
         button.setImageResource(newRotation);
 
     }
@@ -145,13 +224,18 @@ public class Trakus extends ActionBarActivity {
         tTile_Player2 = (ImageButton)findViewById(R.id.button_Player2_T);
         oGameBoard = (GridLayout)findViewById(R.id.gridGameBoard);
 
+        counter1 = (TextView)findViewById(R.id.count_Player1_I);
+        counter1.setText(Integer.toString(playerOne.getI_TilesLeft()));
+
+        RotateAnimation rotate = (RotateAnimation) AnimationUtils.loadAnimation(this,R.anim.rotate);
+        counter1.setAnimation(rotate);
 
         oGameBoard.setOnDragListener(new View.OnDragListener() {
             @Override
             public boolean onDrag(View v, DragEvent event) {
 
                 final int action = event.getAction();
-                switch(action) {
+                switch (action) {
                     case DragEvent.ACTION_DRAG_STARTED:
                         System.out.println("STARTED");
                         successfulDrop = false;
@@ -164,24 +248,25 @@ public class Trakus extends ActionBarActivity {
                         System.out.println("ENTERED");
                         successfulDrop = true;
                         break;
-                    case DragEvent.ACTION_DROP:{
+                    case DragEvent.ACTION_DROP: {
                         placeTile(event.getX(), event.getY(), draggingButton);
                         successfulDrop = true;
                         System.out.println("DROP");
-                        return(true);
+                        return (true);
                     }
-                    case DragEvent.ACTION_DRAG_ENDED:{
+                    case DragEvent.ACTION_DRAG_ENDED: {
                         System.out.println("ENDED");
-                        if(!successfulDrop){
+                        if (!successfulDrop) {
                             rotate(draggingButton);
                         }
-                        return(true);
+                        return (true);
                     }
                     default:
                         break;
                 }
                 return true;
-            }});
+            }
+        });
 
         iTile_Player1.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -283,6 +368,8 @@ public class Trakus extends ActionBarActivity {
 
         switch (view){
             case R.id.button_Player1_I: tileToUse = iTile_Player1_rotation;
+                playerOne.playI_Tile();
+                counter1.setText(Integer.toString(playerOne.getI_TilesLeft()));
                 break;
             case R.id.button_Player1_L: tileToUse = lTile_Player1_rotation;
                 break;
@@ -301,13 +388,6 @@ public class Trakus extends ActionBarActivity {
         if(xPos > 0 && xPos < sizeX){
             if(yPos > 0 && yPos < sizeY){
                 System.out.println("Tile 0");
-//                currentTile = tileList.get(0);
-//                currentTile.setOwner(Tile.Owner.player_1);
-//                currentButton = buttonList.get(0);
-//                currentButton.setImageResource(tileToUse);
-//                System.out.println(tileToUse);
-//                buttonList.set(0, currentButton);
-//                tileList.set(0, currentTile);
                 tileConfig(0, tileToUse);
             }
             else if(yPos > sizeY && yPos < (sizeY*2)){
@@ -548,6 +628,7 @@ public class Trakus extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 
 
 }

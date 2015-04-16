@@ -12,23 +12,40 @@
         android:layout_height="fill_parent"
         android:id="@+id/tray_Player1"
         android:layout_alignTop="@+id/tray_Player2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:weightSum="1"
         android:clickable="true"
         android:onClick="rotate">
 
-        <ImageButton
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button_Player1_I"
             android:layout_weight="0.02"
-            android:adjustViewBounds="true"
-            android:src="@drawable/tile_i_blue_0"
-            android:visibility="visible"
-            android:clickable="true"
-            android:onClick="rotate()"
-            android:nestedScrollingEnabled="false"/>
+            android:id="@+id/buttonContainer_Player1_I">
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_Player1_I"
+                android:layout_weight="0.02"
+                android:adjustViewBounds="true"
+                android:src="@drawable/tile_i_blue_0"
+                android:visibility="visible"
+                android:clickable="true"
+                android:onClick="rotate()"
+                android:nestedScrollingEnabled="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="10"
+                android:id="@+id/count_Player1_I"
+                android:layout_weight="0.02"
+                android:gravity="center_vertical|center_horizontal"
+                android:rotation="180"/>
+
+        </LinearLayout>
 
         <ImageButton
             android:layout_width="match_parent"

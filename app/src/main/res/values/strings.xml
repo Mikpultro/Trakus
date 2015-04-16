@@ -8,5 +8,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_trakus">Trakus</string>
+    <string name="numITilesPlayer1">##</string>
+    <string name="numLTilesPlayer1">##</string>
+    <string name="numTTilesPlayer1">##</string>
+    <string name="numITilesPlayer2">##</string>
+    <string name="numLTilesPlayer2">##</string>
+    <string name="numTTilesPlayer2">##</string>
 
 </resources>
