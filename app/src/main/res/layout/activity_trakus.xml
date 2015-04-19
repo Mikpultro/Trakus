@@ -18,7 +18,7 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.02"
             android:id="@+id/buttonContainer_Player1_I">
@@ -47,25 +47,59 @@
 
         </LinearLayout>
 
-        <ImageButton
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button_Player1_L"
-            android:layout_weight="0.02"
-            android:adjustViewBounds="true"
-            android:src="@drawable/tile_l_blue_0"
-            android:clickable="true"
-            />
+            android:id="@+id/buttonContainer_Player1_L">
 
-        <ImageButton
-            android:layout_width="match_parent"
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_Player1_L"
+                android:layout_weight="0.02"
+                android:adjustViewBounds="true"
+                android:src="@drawable/tile_l_blue_0"
+                android:clickable="true"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="10"
+                android:id="@+id/count_Player1_L"
+                android:layout_weight="0.02"
+                android:gravity="center_vertical|center_horizontal"
+                android:rotation="180"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button_Player1_T"
-            android:layout_weight="0.23"
-            android:src="@drawable/tile_t_blue_0"
-            android:contentDescription="player1_t_tile"
-            android:clickable="true"
-            />
+            android:id="@+id/buttonContainer_Player1_T">
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_Player1_T"
+                android:layout_weight="0.23"
+                android:src="@drawable/tile_t_blue_0"
+                android:contentDescription="player1_t_tile"
+                android:clickable="true"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="10"
+                android:id="@+id/count_Player1_T"
+                android:layout_weight="0.02"
+                android:gravity="center_vertical|center_horizontal"
+                android:rotation="180"/>
+        </LinearLayout>
 
     </LinearLayout>
     <LinearLayout
@@ -104,27 +138,81 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true">
 
-        <ImageButton
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button_Player2_I"
-            android:layout_weight="0.16"
-            android:src="@drawable/tile_i_red_0"
-            android:cropToPadding="false"/>
+            android:id="@+id/buttonContainer_Player2_I">
 
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_Player2_L"
-            android:layout_weight="0.16"
-            android:src="@drawable/tile_l_red_0"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="10"
+                android:id="@+id/count_Player2_I"
+                android:layout_weight="0.02"
+                android:gravity="center_vertical|center_horizontal"
+                android:rotation="180"/>
 
-        <ImageButton
-            android:layout_width="match_parent"
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_Player2_I"
+                android:layout_weight="0.16"
+                android:src="@drawable/tile_i_red_0"
+                android:cropToPadding="false"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button_Player2_T"
-            android:layout_weight="0.16"
-            android:src="@drawable/tile_t_red_0"/>
+            android:id="@+id/buttonContainer_Player2_L">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="10"
+                android:id="@+id/count_Player2_L"
+                android:layout_weight="0.02"
+                android:gravity="center_vertical|center_horizontal"
+                android:rotation="180"/>
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_Player2_L"
+                android:layout_weight="0.16"
+                android:src="@drawable/tile_l_red_0"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonContainer_Player2_T">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="10"
+                android:id="@+id/count_Player2_T"
+                android:layout_weight="0.02"
+                android:gravity="center_vertical|center_horizontal"
+                android:rotation="180"/>
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_Player2_T"
+                android:layout_weight="0.16"
+                android:src="@drawable/tile_t_red_0"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

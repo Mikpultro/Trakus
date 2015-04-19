@@ -30,11 +30,15 @@ public class Player {
     }
 
     public void playL_Tile(){
-
+        int newCount = getL_TilesLeft() - 1;
+        setL_TilesLeft(newCount);
+        System.out.println("New L Tile Count: "+Integer.toString(this.getL_TilesLeft()));
     }
 
     public void playT_Tile(){
-
+        int newCount = getT_TilesLeft() - 1;
+        setT_TilesLeft(newCount);
+        System.out.println("New T Tile Count: "+Integer.toString(this.getT_TilesLeft()));
     }
 
     public void placeTile(){
