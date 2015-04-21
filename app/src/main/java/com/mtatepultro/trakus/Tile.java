@@ -7,10 +7,10 @@ public class Tile {
 
     // ---- Variables ----
     public Integer mTileID;
-    public boolean mSideNorthPlayable;
-    public boolean mSideSouthPlayable;
-    public boolean mSideEastPlayable;
-    public boolean mSideWestPlayable;
+    public boolean mSideNorthPlayable = false;
+    public boolean mSideSouthPlayable = false;
+    public boolean mSideEastPlayable = false;
+    public boolean mSideWestPlayable = false;
     public boolean mIsTileEmpty = true;
     public enum TileType{
         i_Tile,
@@ -52,6 +52,7 @@ public class Tile {
     }
 
     public boolean isSideNorthPlayable() {
+
         return mSideNorthPlayable;
     }
 
@@ -103,6 +104,10 @@ public class Tile {
         mIsTileEmpty = isTileEmpty;
     }
 
+    public void isUsed() {
+        mIsTileEmpty = false;
+    }
+
     public void setTileType(TileType tileType) {
         this.mTileType = tileType;
     }
@@ -110,12 +115,16 @@ public class Tile {
     public void setOwner(Owner owner) { this.mOwner = owner; }
 
     // ---- Methods ----
-    public boolean SidePlayable() {
-        boolean playable = false;
-        if(this.SideOpen() && this.SideOnBoard()){
-            playable = true;
-        }
-        return playable;
+//    public boolean SidePlayable() {
+//        boolean playable = false;
+//        if(this.SideOpen() && this.SideOnBoard()){
+//            playable = true;
+//        }
+//        return playable;
+//    }
+
+    public void config(int tile){
+
     }
 
     public boolean SideOpen(){

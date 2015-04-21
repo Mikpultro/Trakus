@@ -43,7 +43,7 @@
                 android:id="@+id/count_Player1_I"
                 android:layout_weight="0.02"
                 android:gravity="center_vertical|center_horizontal"
-                android:rotation="180"/>
+                />
 
         </LinearLayout>
 
@@ -71,7 +71,7 @@
                 android:id="@+id/count_Player1_L"
                 android:layout_weight="0.02"
                 android:gravity="center_vertical|center_horizontal"
-                android:rotation="180"/>
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -98,7 +98,7 @@
                 android:id="@+id/count_Player1_T"
                 android:layout_weight="0.02"
                 android:gravity="center_vertical|center_horizontal"
-                android:rotation="180"/>
+                />
         </LinearLayout>
 
     </LinearLayout>
@@ -136,7 +136,8 @@
         android:weightSum="1"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true">
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="false">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -152,14 +153,14 @@
                 android:id="@+id/count_Player2_I"
                 android:layout_weight="0.02"
                 android:gravity="center_vertical|center_horizontal"
-                android:rotation="180"/>
+                />
 
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button_Player2_I"
                 android:layout_weight="0.16"
-                android:src="@drawable/tile_i_red_0"
+                android:src="@drawable/tile_i_red_180"
                 android:cropToPadding="false"/>
 
         </LinearLayout>
@@ -178,14 +179,14 @@
                 android:id="@+id/count_Player2_L"
                 android:layout_weight="0.02"
                 android:gravity="center_vertical|center_horizontal"
-                android:rotation="180"/>
+                />
 
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button_Player2_L"
                 android:layout_weight="0.16"
-                android:src="@drawable/tile_l_red_0"/>
+                android:src="@drawable/tile_l_red_180"/>
 
         </LinearLayout>
 
@@ -203,14 +204,14 @@
                 android:id="@+id/count_Player2_T"
                 android:layout_weight="0.02"
                 android:gravity="center_vertical|center_horizontal"
-                android:rotation="180"/>
+                />
 
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button_Player2_T"
                 android:layout_weight="0.16"
-                android:src="@drawable/tile_t_red_0"/>
+                android:src="@drawable/tile_t_red_180"/>
 
         </LinearLayout>
 

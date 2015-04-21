@@ -43,9 +43,9 @@ public class Trakus extends ActionBarActivity {
     Integer iTile_Player1_rotation = R.drawable.tile_i_blue_0;
     Integer lTile_Player1_rotation = R.drawable.tile_l_blue_0;
     Integer tTile_Player1_rotation = R.drawable.tile_t_blue_0;
-    Integer iTile_Player2_rotation = R.drawable.tile_i_red_0;
-    Integer lTile_Player2_rotation = R.drawable.tile_l_red_0;
-    Integer tTile_Player2_rotation = R.drawable.tile_t_red_0;
+    Integer iTile_Player2_rotation = R.drawable.tile_i_red_180;
+    Integer lTile_Player2_rotation = R.drawable.tile_l_red_180;
+    Integer tTile_Player2_rotation = R.drawable.tile_t_red_180;
 
     private static Integer draggingButton;
     private static Integer numTiles = 36;
@@ -55,8 +55,8 @@ public class Trakus extends ActionBarActivity {
     private GridLayout oGameBoard;
     private LinearLayout oGameBoardShell;
 
-    Player playerOne = new Player(5, 8, 3);
-    Player playerTwo = new Player(5, 8, 3);;
+    Player playerOne = new Player(5, 9, 3);
+    Player playerTwo = new Player(5, 9, 3);;
     public String numITilesP1;
 
 
@@ -80,6 +80,7 @@ public class Trakus extends ActionBarActivity {
 
     public Trakus(){
         tileList = initializeTiles();
+
     }
 
     public void rotate(Integer rotatingBtn){
@@ -254,6 +255,8 @@ public class Trakus extends ActionBarActivity {
         lCounter_Player2.setAnimation(rotate);
         tCounter_Player2.setAnimation(rotate);
 
+
+
         oGameBoard.setOnDragListener(new View.OnDragListener() {
             @Override
             public boolean onDrag(View v, DragEvent event) {
@@ -274,6 +277,7 @@ public class Trakus extends ActionBarActivity {
                         break;
                     case DragEvent.ACTION_DROP: {
                         placeTile(event.getX(), event.getY(), draggingButton);
+                        System.out.println("X="+event.getX() + " Y=" + event.getY());
                         successfulDrop = true;
                         System.out.println("DROP");
                         return (true);
@@ -374,10 +378,22 @@ public class Trakus extends ActionBarActivity {
 
         currentTile = tileList.get(pos);
         currentButton = buttonList.get(pos);
-        currentButton.setImageResource(tileToUse);
-        System.out.println(tileToUse);
-        buttonList.set(pos, currentButton);
-        tileList.set(pos, currentTile);
+
+        if(currentTile.isTileEmpty()){
+            currentTile.isUsed();
+            currentButton.setImageResource(tileToUse);
+            System.out.println(tileToUse);
+            buttonList.set(pos, currentButton);
+            tileList.set(pos, currentTile);
+        }
+        else{
+            System.out.println("TILE OCCUPIED");
+        }
+
+//        currentTile.setOwner();
+
+
+
     }
 
     public void placeTile( float xPos, float yPos, Integer view) {
@@ -624,7 +640,8 @@ public class Trakus extends ActionBarActivity {
                 {
                     Trakus.this.oGameBoard.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 }
-
+                placeTile(112, 112, R.id.button_Player1_L);
+                placeTile(1600, 1200, R.id.button_Player2_L);
 
 
             }
