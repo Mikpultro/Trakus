@@ -68,7 +68,7 @@ public class Tile {
         return mSideWestPlayable;
     }
 
-    public boolean isTileEmpty() {
+    public boolean isEmpty() {
         return mIsTileEmpty;
     }
 

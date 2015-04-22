@@ -375,16 +375,23 @@ public class Trakus extends ActionBarActivity {
         ImageButton currentButton;
         Tile currentTile;
 
-
+        //northTile, southTile, eastTile, westTile
         currentTile = tileList.get(pos);
+//        northTile = tileList.get(pos-6);
+//        southTile = tileList.get(pos+6);
+//        eastTile = tileList.get(pos+1);
+//        westTile = tileList.get(pos-1);
+
         currentButton = buttonList.get(pos);
 
-        if(currentTile.isTileEmpty()){
+        if(currentTile.isEmpty()){
             currentTile.isUsed();
             currentButton.setImageResource(tileToUse);
             System.out.println(tileToUse);
             buttonList.set(pos, currentButton);
             tileList.set(pos, currentTile);
+
+
         }
         else{
             System.out.println("TILE OCCUPIED");
@@ -395,6 +402,9 @@ public class Trakus extends ActionBarActivity {
 
 
     }
+
+
+
 
     public void placeTile( float xPos, float yPos, Integer view) {
         int width = Trakus.this.oGameBoard.getMeasuredWidth();
@@ -410,7 +420,7 @@ public class Trakus extends ActionBarActivity {
         switch (view) {
             case R.id.button_Player1_I:
                 tileToUse = iTile_Player1_rotation;
-                if (playerOne.getI_TilesLeft() > 0) {
+                if (playerOne.getI_TilesLeft() > 0 ) {
                     playerOne.playI_Tile();
                     iCounter_Player1.setText(Integer.toString(playerOne.getI_TilesLeft()));
                     okToPlay = true;
