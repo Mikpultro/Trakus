@@ -12,6 +12,8 @@ public class Tile {
     public boolean mSideEastPlayable = false;
     public boolean mSideWestPlayable = false;
     public boolean mIsTileEmpty = true;
+
+
     public enum TileType{
         i_Tile,
         l_Tile,
@@ -45,6 +47,8 @@ public class Tile {
         }
 
     }
+
+
 
     // GETTERS
     public Integer getTileID() {

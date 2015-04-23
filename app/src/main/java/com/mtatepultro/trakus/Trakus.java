@@ -84,7 +84,6 @@ public class Trakus extends ActionBarActivity {
     }
 
     public void rotate(Integer rotatingBtn){
-        System.out.println("ROTATE");
         switch (rotatingBtn){
             case R.id.button_Player1_I:
                 rotateTile(iTile_Player1, iTile_Player1_rotation);
@@ -264,26 +263,26 @@ public class Trakus extends ActionBarActivity {
                 final int action = event.getAction();
                 switch (action) {
                     case DragEvent.ACTION_DRAG_STARTED:
-                        System.out.println("STARTED");
+//                        System.out.println("STARTED");
                         successfulDrop = false;
                         break;
                     case DragEvent.ACTION_DRAG_EXITED:
-                        System.out.println("EXITED");
+//                        System.out.println("EXITED");
                         successfulDrop = false;
                         break;
                     case DragEvent.ACTION_DRAG_ENTERED:
-                        System.out.println("ENTERED");
+//                        System.out.println("ENTERED");
                         successfulDrop = true;
                         break;
                     case DragEvent.ACTION_DROP: {
                         placeTile(event.getX(), event.getY(), draggingButton);
-                        System.out.println("X="+event.getX() + " Y=" + event.getY());
+//                        System.out.println("X="+event.getX() + " Y=" + event.getY());
                         successfulDrop = true;
-                        System.out.println("DROP");
+//                        System.out.println("DROP");
                         return (true);
                     }
                     case DragEvent.ACTION_DRAG_ENDED: {
-                        System.out.println("ENDED");
+//                        System.out.println("ENDED");
                         if (!successfulDrop) {
                             rotate(draggingButton);
                         }
@@ -362,11 +361,8 @@ public class Trakus extends ActionBarActivity {
             }
         });
 
-
-
         this.oGameBoard = (GridLayout) this.findViewById(R.id.gridGameBoard);
         this.oGameBoard.getViewTreeObserver().addOnGlobalLayoutListener(this.SquareIfy());
-
     }
 
 
@@ -374,35 +370,83 @@ public class Trakus extends ActionBarActivity {
 
         ImageButton currentButton;
         Tile currentTile;
-
-        //northTile, southTile, eastTile, westTile
         currentTile = tileList.get(pos);
-//        northTile = tileList.get(pos-6);
-//        southTile = tileList.get(pos+6);
-//        eastTile = tileList.get(pos+1);
-//        westTile = tileList.get(pos-1);
-
         currentButton = buttonList.get(pos);
 
         if(currentTile.isEmpty()){
             currentTile.isUsed();
             currentButton.setImageResource(tileToUse);
-            System.out.println(tileToUse);
+            setPlayableTiles(pos);
             buttonList.set(pos, currentButton);
             tileList.set(pos, currentTile);
-
-
         }
         else{
             System.out.println("TILE OCCUPIED");
         }
 
-//        currentTile.setOwner();
-
-
-
     }
 
+    public void setPlayableTiles(int pos){
+        Tile currentTile;
+        Integer rotation;
+        currentTile = tileList.get(pos);
+        switch(draggingButton){
+
+            case R.id.button_Player1_I:
+                rotation = iTile_Player1_rotation;
+                switch(rotation){
+                    case R.drawable.tile_i_blue_0:
+                    case R.drawable.tile_i_blue_180:
+                        currentTile.setSideNorthPlayable(true);
+                        currentTile.setSideSouthPlayable(true);
+                        System.out.println((pos-6)+ " " +(pos+6));
+                        break;
+                    case R.drawable.tile_i_blue_90:
+                    case R.drawable.tile_i_blue_270:
+                        currentTile.setSideEastPlayable(true);
+                        currentTile.setSideWestPlayable(true);
+                        break;
+                }
+                break;
+
+            case R.id.button_Player2_I:
+                rotation = iTile_Player2_rotation;
+                switch(rotation){
+                    case R.drawable.tile_i_red_0:
+                    case R.drawable.tile_i_red_180:
+                        currentTile.setSideNorthPlayable(true);
+                        currentTile.setSideSouthPlayable(true);
+                        break;
+                    case R.drawable.tile_i_red_90:
+                    case R.drawable.tile_i_red_270:
+                        currentTile.setSideEastPlayable(true);
+                        currentTile.setSideWestPlayable(true);
+                        break;
+                }
+                break;
+
+            case R.id.button_Player1_L:
+                rotation = lTile_Player1_rotation;
+
+                break;
+
+            case R.id.button_Player2_L:
+                rotation = lTile_Player2_rotation;
+
+                break;
+
+            case R.id.button_Player1_T:
+                rotation = tTile_Player1_rotation;
+
+                break;
+
+            case R.id.button_Player2_T:
+                rotation = tTile_Player2_rotation;
+
+                break;
+        }
+
+    }
 
     public int tileToUse(int view) {
         int returnTile = 0;
@@ -718,7 +762,9 @@ public class Trakus extends ActionBarActivity {
                 {
                     Trakus.this.oGameBoard.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 }
+                draggingButton = R.id.button_Player1_L;
                 placeTile(112, 112, R.id.button_Player1_L);
+                draggingButton = R.id.button_Player2_L;
                 placeTile(1600, 1200, R.id.button_Player2_L);
 
 
