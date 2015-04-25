@@ -110,7 +110,8 @@
         android:layout_weight="1"
         android:layout_toRightOf="@+id/tray_Player1"
         android:layout_toLeftOf="@+id/tray_Player2"
-        android:layout_toStartOf="@+id/tray_Player2">
+        android:layout_toStartOf="@+id/tray_Player2"
+        android:background="#ff0042ff">
 
         <GridLayout
             android:background="@android:color/white"
@@ -135,9 +136,9 @@
         android:id="@+id/tray_Player2"
         android:weightSum="1"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="false"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="false">
+        android:layout_alignParentEnd="true">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -146,14 +147,14 @@
             android:id="@+id/buttonContainer_Player2_I">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="10"
                 android:id="@+id/count_Player2_I"
                 android:layout_weight="0.02"
                 android:gravity="center_vertical|center_horizontal"
-                />
+                android:background="#ffff3f14"/>
 
             <ImageButton
                 android:layout_width="match_parent"

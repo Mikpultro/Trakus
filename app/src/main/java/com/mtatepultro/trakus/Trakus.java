@@ -247,12 +247,21 @@ public class Trakus extends ActionBarActivity {
 
         RotateAnimation rotate = (RotateAnimation) AnimationUtils.loadAnimation(this,R.anim.rotate);
 
-        iCounter_Player1.setAnimation(rotate);
-        lCounter_Player1.setAnimation(rotate);
-        tCounter_Player1.setAnimation(rotate);
-        iCounter_Player2.setAnimation(rotate);
-        lCounter_Player2.setAnimation(rotate);
-        tCounter_Player2.setAnimation(rotate);
+        iCounter_Player1.setRotation(90);
+        lCounter_Player1.setRotation(90);
+        tCounter_Player1.setRotation(90);
+        iCounter_Player2.setRotation(270);
+        lCounter_Player2.setRotation(270);
+        tCounter_Player2.setRotation(270);
+
+//        iCounter_Player1.forceLayout();
+
+//        iCounter_Player1.setAnimation(rotate);
+//        lCounter_Player1.setAnimation(rotate);
+//        tCounter_Player1.setAnimation(rotate);
+//        iCounter_Player2.setAnimation(rotate);
+//        lCounter_Player2.setAnimation(rotate);
+//        tCounter_Player2.setAnimation(rotate);
 
 
 
@@ -373,15 +382,16 @@ public class Trakus extends ActionBarActivity {
         currentTile = tileList.get(pos);
         currentButton = buttonList.get(pos);
 
-        if(currentTile.isEmpty()){
-            currentTile.isUsed();
-            currentButton.setImageResource(tileToUse);
-            setPlayableTiles(pos);
-            buttonList.set(pos, currentButton);
-            tileList.set(pos, currentTile);
-        }
-        else{
-            System.out.println("TILE OCCUPIED");
+        if(tileToUse != 0) {
+            if (currentTile.isEmpty()) {
+                currentTile.isUsed();
+                currentButton.setImageResource(tileToUse);
+                setPlayableTiles(pos);
+                buttonList.set(pos, currentButton);
+                tileList.set(pos, currentTile);
+            } else {
+                System.out.println("TILE OCCUPIED");
+            }
         }
 
     }
@@ -452,43 +462,43 @@ public class Trakus extends ActionBarActivity {
         int returnTile = 0;
         switch (view) {
             case R.id.button_Player1_I:
-                returnTile = iTile_Player1_rotation;
                 if (playerOne.getI_TilesLeft() > 0 ) {
+                    returnTile = iTile_Player1_rotation;
                     playerOne.playI_Tile();
                     iCounter_Player1.setText(Integer.toString(playerOne.getI_TilesLeft()));
                 }
                 break;
             case R.id.button_Player1_L:
-                returnTile = lTile_Player1_rotation;
                 if (playerOne.getL_TilesLeft() > 0) {
+                    returnTile = lTile_Player1_rotation;
                     playerOne.playL_Tile();
                     lCounter_Player1.setText(Integer.toString(playerOne.getL_TilesLeft()));
                 }
                 break;
             case R.id.button_Player1_T:
-                returnTile = tTile_Player1_rotation;
                 if (playerOne.getT_TilesLeft() > 0) {
+                    returnTile = tTile_Player1_rotation;
                     playerOne.playT_Tile();
                     tCounter_Player1.setText(Integer.toString(playerOne.getT_TilesLeft()));
                 }
                 break;
             case R.id.button_Player2_I:
-                returnTile = iTile_Player2_rotation;
                 if (playerTwo.getI_TilesLeft() > 0) {
+                    returnTile = iTile_Player2_rotation;
                     playerTwo.playI_Tile();
                     iCounter_Player2.setText(Integer.toString(playerTwo.getI_TilesLeft()));
                 }
                 break;
             case R.id.button_Player2_L:
-                returnTile = lTile_Player2_rotation;
                 if (playerTwo.getL_TilesLeft() > 0) {
+                    returnTile = lTile_Player2_rotation;
                     playerTwo.playL_Tile();
                     lCounter_Player2.setText(Integer.toString(playerTwo.getL_TilesLeft()));
                 }
                 break;
             case R.id.button_Player2_T:
-                returnTile = tTile_Player2_rotation;
                 if (playerTwo.getT_TilesLeft() > 0) {
+                    returnTile = tTile_Player2_rotation;
                     playerTwo.playT_Tile();
                     tCounter_Player2.setText(Integer.toString(playerTwo.getT_TilesLeft()));
                 }
