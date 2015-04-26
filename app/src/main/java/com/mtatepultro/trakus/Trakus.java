@@ -383,7 +383,8 @@ public class Trakus extends ActionBarActivity {
         currentButton = buttonList.get(pos);
 
         if(tileToUse != 0) {
-            if (currentTile.isEmpty()) {
+            if (currentTile.isEmpty() && currentTile.isPlayable(tileList, pos)) {
+            //if (currentTile.isEmpty()){
                 currentTile.isUsed();
                 currentButton.setImageResource(tileToUse);
                 setPlayableTiles(pos);
@@ -410,6 +411,7 @@ public class Trakus extends ActionBarActivity {
                         currentTile.setSideNorthPlayable(true);
                         currentTile.setSideSouthPlayable(true);
                         System.out.println((pos-6)+ " " +(pos+6));
+
                         break;
                     case R.drawable.tile_i_blue_90:
                     case R.drawable.tile_i_blue_270:
@@ -437,22 +439,102 @@ public class Trakus extends ActionBarActivity {
 
             case R.id.button_Player1_L:
                 rotation = lTile_Player1_rotation;
+                switch(rotation){
+                    case R.drawable.tile_l_blue_0:
+                        currentTile.setSideSouthPlayable(true);
+                        currentTile.setSideEastPlayable(true);
+                        break;
+                    case R.drawable.tile_l_blue_90:
+                        currentTile.setSideSouthPlayable(true);
+                        currentTile.setSideWestPlayable(true);
+                        break;
+                    case R.drawable.tile_l_blue_180:
+                        currentTile.setSideNorthPlayable(true);
+                        currentTile.setSideWestPlayable(true);
+                        break;
 
+                    case R.drawable.tile_l_blue_270:
+                        currentTile.setSideEastPlayable(true);
+                        currentTile.setSideNorthPlayable(true);
+                        break;
+                }
                 break;
 
             case R.id.button_Player2_L:
                 rotation = lTile_Player2_rotation;
+                switch(rotation){
+                    case R.drawable.tile_l_red_0:
+                        currentTile.setSideSouthPlayable(true);
+                        currentTile.setSideEastPlayable(true);
+                        break;
+                    case R.drawable.tile_l_red_90:
+                        currentTile.setSideSouthPlayable(true);
+                        currentTile.setSideWestPlayable(true);
+                        break;
+                    case R.drawable.tile_l_red_180:
+                        currentTile.setSideNorthPlayable(true);
+                        currentTile.setSideWestPlayable(true);
+                        break;
 
+                    case R.drawable.tile_l_red_270:
+                        currentTile.setSideEastPlayable(true);
+                        currentTile.setSideNorthPlayable(true);
+                        break;
+                }
                 break;
 
             case R.id.button_Player1_T:
                 rotation = tTile_Player1_rotation;
+                switch(rotation){
+                    case R.drawable.tile_t_blue_0:
+                        currentTile.setSideNorthPlayable(true);
+                        currentTile.setSideSouthPlayable(true);
+                        currentTile.setSideEastPlayable(true);
+                        break;
+                    case R.drawable.tile_t_blue_90:
+                        currentTile.setSideSouthPlayable(true);
+                        currentTile.setSideWestPlayable(true);
+                        currentTile.setSideEastPlayable(true);
+                        break;
+                    case R.drawable.tile_t_blue_180:
+                        currentTile.setSideNorthPlayable(true);
+                        currentTile.setSideWestPlayable(true);
+                        currentTile.setSideSouthPlayable(true);
+                        break;
 
+                    case R.drawable.tile_t_blue_270:
+                        currentTile.setSideEastPlayable(true);
+                        currentTile.setSideNorthPlayable(true);
+                        currentTile.setSideWestPlayable(true);
+                        break;
+                }
                 break;
 
             case R.id.button_Player2_T:
                 rotation = tTile_Player2_rotation;
+                switch(rotation){
+                    case R.drawable.tile_t_red_0:
+                        currentTile.setSideNorthPlayable(true);
+                        currentTile.setSideSouthPlayable(true);
+                        currentTile.setSideEastPlayable(true);
+                        break;
+                    case R.drawable.tile_t_red_90:
+                        currentTile.setSideSouthPlayable(true);
+                        currentTile.setSideWestPlayable(true);
+                        currentTile.setSideEastPlayable(true);
+                        break;
+                    case R.drawable.tile_t_red_180:
+                        currentTile.setSideNorthPlayable(true);
+                        currentTile.setSideWestPlayable(true);
+                        currentTile.setSideSouthPlayable(true);
+                        break;
 
+                    case R.drawable.tile_t_red_270:
+                        currentTile.setSideEastPlayable(true);
+                        currentTile.setSideNorthPlayable(true);
+                        currentTile.setSideWestPlayable(true);
+                        break;
+                }
                 break;
         }
 
