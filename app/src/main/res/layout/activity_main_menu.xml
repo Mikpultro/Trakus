@@ -5,7 +5,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.mtatepultro.trakus.MainMenu"
-    android:background="@drawable/main_menu">
+    android:background="@drawable/main_menu"
+    android:theme="@style/Theme.AppCompat">
 
     <Button
         android:layout_width="wrap_content"

@@ -21,13 +21,16 @@
         <activity
             android:name=".Trakus"
             android:label="@string/title_activity_trakus" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mtatepultro.trakus.MainMenu" />
         </activity>
         <activity
             android:name=".Settings"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".MainMenu"
-            android:theme="@style/FullscreenTheme" >
+             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mtatepultro.trakus.MainMenu" />
