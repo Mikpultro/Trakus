@@ -123,15 +123,33 @@ public class Tile {
     // ---- Methods ----
     public boolean isPlayable( List<Tile> tileList, int pos) {
         boolean playable = false;
-        Tile northTile = SidePlayable((pos-6), tileList);
-        Tile southTile = SidePlayable((pos+6), tileList);
-        Tile eastTile = SidePlayable((pos+1), tileList);
-        Tile westTile = SidePlayable((pos-1), tileList);
+        Tile northTile = SidePlayable((pos - 6), tileList);
+        Tile southTile = SidePlayable((pos + 6), tileList);
+        Tile eastTile = SidePlayable((pos + 1), tileList);
+        Tile westTile = SidePlayable((pos - 1), tileList);
 
-        if( northTile.isSideSouthPlayable() ||
-            southTile.isSideNorthPlayable() ||
-            eastTile.isSideWestPlayable() ||
-            westTile.isSideEastPlayable() ){
+        System.out.println("isPlayable North: " + (northTile != null));
+        System.out.println("isPlayable south: " + (southTile != null));
+        System.out.println("isPlayable east: " + (eastTile != null));
+        System.out.println("isPlayable west: " + (westTile != null));
+
+        if(northTile != null) {
+            System.out.println("isSouthSide of North Playable: " + (northTile.isSideSouthPlayable()));
+        }
+        if(southTile != null) {
+            System.out.println("isNorthSide of South Playable: " + (southTile.isSideNorthPlayable()));
+        }
+        if(eastTile != null) {
+            System.out.println("isEastSide of West Playable: " + (eastTile.isSideWestPlayable()));
+        }
+        if(westTile != null) {
+            System.out.println("isWestSide of East Playable: " + (westTile.isSideEastPlayable()));
+        }
+
+        if( (northTile != null && northTile.isSideSouthPlayable()) ||
+            (southTile != null && southTile.isSideNorthPlayable()) ||
+            (eastTile != null && eastTile.isSideWestPlayable()) ||
+            (westTile != null && westTile.isSideEastPlayable()) ){
             playable = true;
 
 
@@ -141,9 +159,11 @@ public class Tile {
 
 
     public Tile SidePlayable(int pos, List<Tile> tileList) {
-        Tile tileToReturn = tileList.get(0);
+        Tile tileToReturn = null;
         if(this.SideOnBoard(pos)){
+            System.out.println("TILE " + pos + " on board.");
             if(this.SideOpen(tileList.get(pos))){
+                System.out.println("TILE " + pos + " playable");
                 tileToReturn = tileList.get(pos);
             }
         }

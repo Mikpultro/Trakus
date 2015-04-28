@@ -254,14 +254,7 @@ public class Trakus extends ActionBarActivity {
         lCounter_Player2.setRotation(270);
         tCounter_Player2.setRotation(270);
 
-//        iCounter_Player1.forceLayout();
 
-//        iCounter_Player1.setAnimation(rotate);
-//        lCounter_Player1.setAnimation(rotate);
-//        tCounter_Player1.setAnimation(rotate);
-//        iCounter_Player2.setAnimation(rotate);
-//        lCounter_Player2.setAnimation(rotate);
-//        tCounter_Player2.setAnimation(rotate);
 
 
 
@@ -383,8 +376,10 @@ public class Trakus extends ActionBarActivity {
         currentButton = buttonList.get(pos);
 
         if(tileToUse != 0) {
-            if (currentTile.isEmpty() && currentTile.isPlayable(tileList, pos)) {
-            //if (currentTile.isEmpty()){
+
+            System.out.println("Current Tile is playable: " + (currentTile.isPlayable(tileList, pos)));
+            if (currentTile.isEmpty()){
+//            if (currentTile.isEmpty() && currentTile.isPlayable(tileList, pos)) {
                 currentTile.isUsed();
                 currentButton.setImageResource(tileToUse);
                 setPlayableTiles(pos);
@@ -854,6 +849,12 @@ public class Trakus extends ActionBarActivity {
                 {
                     Trakus.this.oGameBoard.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 }
+
+                tileList.get(1).setSideWestPlayable(true);
+                tileList.get(6).setSideNorthPlayable(true);
+                tileList.get(29).setSideSouthPlayable(true);
+                tileList.get(34).setSideEastPlayable(true);
+
                 draggingButton = R.id.button_Player1_L;
                 placeTile(112, 112, R.id.button_Player1_L);
                 draggingButton = R.id.button_Player2_L;

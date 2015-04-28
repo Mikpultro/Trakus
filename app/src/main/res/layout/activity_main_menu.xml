@@ -4,14 +4,37 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.mtatepultro.trakus.MainMenu">
+    tools:context="com.mtatepultro.trakus.MainMenu"
+    android:background="@drawable/main_menu">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start Trakus"
         android:id="@+id/buttonTrakus"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="1073dp"
+        android:layout_marginEnd="1073dp"
+        android:height="110dp"
+        android:width="100dp"
+        android:alpha="0"
+        android:shadowColor="#00ffffff"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:id="@+id/buttonSettings"
+        android:height="300dp"
+        android:width="300dp"
+        android:alpha="0"
+        android:shadowColor="#00ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>

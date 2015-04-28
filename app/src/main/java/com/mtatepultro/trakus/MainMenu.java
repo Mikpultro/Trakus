@@ -12,6 +12,8 @@ import android.widget.Button;
 public class MainMenu extends ActionBarActivity {
 
     private Button mStartButton;
+    private Button mSettingsButton;
+    private Button mStoreButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +21,18 @@ public class MainMenu extends ActionBarActivity {
         setContentView(R.layout.activity_main_menu);
 
         mStartButton = (Button)findViewById(R.id.buttonTrakus);
+        mSettingsButton = (Button)findViewById(R.id.buttonSettings);
 
         mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startTrakus();
+            }
+        });
+        mSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                settingsScreen();
             }
         });
     }
@@ -53,6 +62,11 @@ public class MainMenu extends ActionBarActivity {
 
     protected void startTrakus() {
         Intent intent = new Intent(this, Trakus.class);
+        startActivity(intent);
+    }
+
+    protected void settingsScreen() {
+        Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
     }
 }
