@@ -29,8 +29,15 @@
             android:name=".Settings"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainMenu"
-             >
+            android:parentActivityName=".MainMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mtatepultro.trakus.MainMenu" />
+        </activity>
+        <activity
+            android:name=".Store"
+            android:label="@string/title_activity_store"
+            android:parentActivityName=".MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mtatepultro.trakus.MainMenu" />

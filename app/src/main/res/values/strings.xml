@@ -16,5 +16,6 @@
     <string name="numTTilesPlayer2">##</string>
 
     <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_store">Store</string>
 
 </resources>

@@ -22,6 +22,7 @@ public class MainMenu extends ActionBarActivity {
 
         mStartButton = (Button)findViewById(R.id.buttonTrakus);
         mSettingsButton = (Button)findViewById(R.id.buttonSettings);
+        mStoreButton = (Button)findViewById(R.id.buttonStore);
 
         mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +36,13 @@ public class MainMenu extends ActionBarActivity {
                 settingsScreen();
             }
         });
+        mStoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                storeScreen();
+            }
+        });
+
     }
 
 
@@ -67,6 +75,11 @@ public class MainMenu extends ActionBarActivity {
 
     protected void settingsScreen() {
         Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
+    }
+
+    protected void storeScreen() {
+        Intent intent = new Intent(this, Store.class);
         startActivity(intent);
     }
 }
