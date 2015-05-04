@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.mtatepultro.trakus.Trakus">
+    tools:context="com.mtatepultro.trakus.Trakus"
+    android:background="@drawable/wood_table">
 
     <LinearLayout
         android:orientation="vertical"
@@ -43,7 +44,7 @@
                 android:id="@+id/count_Player1_I"
                 android:layout_weight="0.02"
                 android:gravity="center_vertical|center_horizontal"
-                />
+                android:width="30dp"/>
 
         </LinearLayout>
 
@@ -71,7 +72,7 @@
                 android:id="@+id/count_Player1_L"
                 android:layout_weight="0.02"
                 android:gravity="center_vertical|center_horizontal"
-                />
+                android:width="30dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -98,7 +99,7 @@
                 android:id="@+id/count_Player1_T"
                 android:layout_weight="0.02"
                 android:gravity="center_vertical|center_horizontal"
-                />
+                android:width="30dp"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -111,10 +112,10 @@
         android:layout_toRightOf="@+id/tray_Player1"
         android:layout_toLeftOf="@+id/tray_Player2"
         android:layout_toStartOf="@+id/tray_Player2"
-        android:background="#ff0042ff">
+        >
 
         <GridLayout
-            android:background="@android:color/white"
+
             android:id="@+id/gridGameBoard"
             android:rowCount="6"
             android:columnCount="6"
@@ -154,7 +155,7 @@
                 android:id="@+id/count_Player2_I"
                 android:layout_weight="0.02"
                 android:gravity="center_vertical|center_horizontal"
-                android:background="#ffff3f14"/>
+                android:width="30dp"/>
 
             <ImageButton
                 android:layout_width="match_parent"
@@ -162,7 +163,8 @@
                 android:id="@+id/button_Player2_I"
                 android:layout_weight="0.16"
                 android:src="@drawable/tile_i_red_180"
-                android:cropToPadding="false"/>
+                android:cropToPadding="false"
+                android:background="@null"/>
 
         </LinearLayout>
 
@@ -180,7 +182,7 @@
                 android:id="@+id/count_Player2_L"
                 android:layout_weight="0.02"
                 android:gravity="center_vertical|center_horizontal"
-                />
+                android:width="30dp"/>
 
             <ImageButton
                 android:layout_width="match_parent"
@@ -205,7 +207,7 @@
                 android:id="@+id/count_Player2_T"
                 android:layout_weight="0.02"
                 android:gravity="center_vertical|center_horizontal"
-                />
+                android:width="30dp"/>
 
             <ImageButton
                 android:layout_width="match_parent"

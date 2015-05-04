@@ -831,7 +831,10 @@ public class Trakus extends ActionBarActivity {
                         lp.rightMargin = 0;
                         lp.topMargin = 0;
                         lp.bottomMargin = 0;
+
                         b.setLayoutParams(lp);
+                        b.setBackground(null);
+
 
                         Trakus.this.oGameBoard.addView(b);
                         Trakus.this.oGameBoard.getLayoutParams().width = smallestSizeInt * cols;

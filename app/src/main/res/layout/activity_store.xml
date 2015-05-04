@@ -9,9 +9,4 @@
                 tools:context="com.mtatepultro.trakus.Store"
                 android:background="@drawable/game_store">
 
-    <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
 </RelativeLayout>
